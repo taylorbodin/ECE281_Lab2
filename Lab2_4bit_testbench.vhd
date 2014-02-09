@@ -31,6 +31,8 @@ USE ieee.std_logic_1164.ALL;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 USE ieee.numeric_std.ALL;
+
+USE ieee.std_logic_unsigned.all;
  
 ENTITY Lab2_4bit_testbench IS
 END Lab2_4bit_testbench;
@@ -75,7 +77,7 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
+      wait for 1 ns;	
 		
 		--Initialize inputs
 		A <= "0000";
@@ -90,13 +92,47 @@ BEGIN
 			
 			for J in 0 to 15 loop
 			
-				wait for 100 ns;
+				wait for 1 ns;
 				
-				assert (Sum = A + B) report "Expected A + B " &
-					integer'image(to_integer(unsigned((A+B)))) & " for A = " &
-					integer'image(to_integer(unsigned((A)))) & " and B = " &
-					integer'image(to_integer(unsigned((B)))) & ", got " &
-					integer'image(to_integer(unsigned((Sum)))) Severity ERROR;
+				assert (Sum = A + B) report "Expected A + B = " &
+					integer'image(to_integer(signed((A+B)))) & " for A = " &
+					integer'image(to_integer(signed((A)))) & " and B = " &
+					integer'image(to_integer(signed((B)))) & ", got " &
+					integer'image(to_integer(signed((Sum)))) Severity ERROR;
+					
+				-- Increment A
+				A <= A + "0001";
+				
+			end loop;
+			
+		--Increment B and reset A
+		A <= "0000";
+		B <= B + "0001";
+		
+		end loop;
+		
+		
+		
+		--Initialize inputs
+		A <= "0000";
+		B <= "0000";
+		Subtract <= '1';
+
+      -- insert stimulus here
+
+		--Subtract
+		
+		for I in 0 to 15 loop
+			
+			for J in 0 to 15 loop
+			
+				wait for 1 ns;
+				
+				assert (Sum = A - B) report "Expected A - B = " &
+					integer'image(to_integer(signed((A-B)))) & " for A = " &
+					integer'image(to_integer(signed((A)))) & " and B = " &
+					integer'image(to_integer(signed((B)))) & ", got " &
+					integer'image(to_integer(signed((Sum)))) Severity ERROR;
 					
 				-- Increment A
 				A <= A + "0001";
