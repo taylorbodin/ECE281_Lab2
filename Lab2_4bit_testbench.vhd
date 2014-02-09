@@ -146,7 +146,7 @@ BEGIN
 		end loop;
 		
 		--Test Finished
-		report "Test Finished";
+		report "Test Finished!";
 
       wait;
    end process;
