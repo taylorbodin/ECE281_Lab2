@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity Lab2_4bit_adder is
     Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
            B : in  STD_LOGIC_VECTOR (3 downto 0);
-           Cin : in  STD_LOGIC;
+           Subtract : in  STD_LOGIC;
            Sum : out  STD_LOGIC_VECTOR (3 downto 0);
            Cout : out  STD_LOGIC);
 end Lab2_4bit_adder;
@@ -49,11 +49,9 @@ architecture Structural of Lab2_4bit_adder is
 			);
 	END COMPONENT;
 	
-	signal Subtract, Cin1, Cin2, Cin3 : std_logic;
+	signal Cin1, Cin2, Cin3 : std_logic;
 			
 begin
-
-	Subtract <= '0';
 
 	add0 : Full_Adder PORT MAP(
 		A => A(0),
