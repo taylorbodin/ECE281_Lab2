@@ -81,6 +81,8 @@ BEGIN
 		A <= '0';
 		B <= '0';
 		Cin <= '0';
+		
+		wait for 100 ns;
 
 		Assert (Sum = '0' and Cout = '0') report "Problem at A = " &
 			std_logic'image(A) & " and B = " &
@@ -89,9 +91,108 @@ BEGIN
 			std_logic'image(Sum) & " and Cout = " &
 			std_logic'image(Cout) 
 			severity ERROR;
+			
 		
+		A <= '0';
+		B <= '0';
+		Cin <= '1';
+		
+		wait for 100 ns;
 
+		Assert (Sum = '1' and Cout = '0') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+		A <= '0';
+		B <= '1';
+		Cin <= '0';
 		
+		wait for 100 ns;
+
+		Assert (Sum = '1' and Cout = '0') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+		A <= '0';
+		B <= '1';
+		Cin <= '1';
+		
+		wait for 100 ns;
+
+		Assert (Sum = '0' and Cout = '1') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+		A <= '1';
+		B <= '0';
+		Cin <= '0';
+		
+		wait for 100 ns;
+
+		Assert (Sum = '1' and Cout = '0') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+		A <= '1';
+		B <= '0';
+		Cin <= '1';
+		
+		wait for 100 ns;
+
+		Assert (Sum = '0' and Cout = '1') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+		A <= '1';
+		B <= '1';
+		Cin <= '0';
+		
+		wait for 100 ns;
+
+		Assert (Sum = '0' and Cout = '1') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+		A <= '1';
+		B <= '1';
+		Cin <= '1';
+		
+		wait for 100 ns;
+
+		Assert (Sum = '1' and Cout = '1') report "Problem at A = " &
+			std_logic'image(A) & " and B = " &
+			std_logic'image(B) & " and Cin = " &
+			std_logic'image(Cin) & ", got Sum = " &
+			std_logic'image(Sum) & " and Cout = " &
+			std_logic'image(Cout) 
+			severity ERROR;
+			
+--End Test
+
 		report "Test completed";
 
       wait;
