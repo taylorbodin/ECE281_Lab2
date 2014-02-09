@@ -38,14 +38,14 @@ end overflow_detector;
 
 architecture Behavioral of overflow_detector is
 
-	signal AxnorB, AxnorS : std_logic;
+	signal AxnorB, AxorS : std_logic;
 
 begin
 
 	AxnorB <= A_msb xnor B_msb;
-	AxnorS <= A_msb xnor Sum_msb;
+	AxorS <= A_msb xor Sum_msb;
 	
-	O <= AxnorB and AxnorS;
+	O <= AxnorB and AxorS;
 
 end Behavioral;
 
