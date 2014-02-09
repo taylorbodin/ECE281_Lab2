@@ -51,7 +51,7 @@ AandB <= A and B;
 
 Sum <= AxorB xor Cin;
 
-Cout <= AxorBandC and AandB;
+Cout <= AxorBandC or AandB;
 
 end Behavioral;
 
