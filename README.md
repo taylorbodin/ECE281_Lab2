@@ -69,9 +69,11 @@ Using the components defined above, I implemented the following schematic in VHD
 
 ![alt text](final_design.jpg "final schematic")
 
+*Please note that A(2) on the far right adder should read A(0)*
+
 #### Testing
 
-A looping, self-testing testbench was written for all 512 combinations using nested for loops. The assert statements would compare the output of the final circuit to A + B or A - B using the arithmetic library. Below are the simulation results. Notice the console has no errors and displays a "Test Completed!" when finished.
+A looping, self-testing testbench was written for all 512 combinations using nested for loops. The assert statements would compare the output of the final circuit to A + B or A - B using the arithmetic library. Below are the simulation results. Notice the console has no errors and displays a "Test Finished!" when finished.
 
 ![alt text](final_adder_testbench.JPG "final design testbench")
 
@@ -83,3 +85,9 @@ A constraint file was generated wiring the inputs and output to the correct pins
 ### Testing
 
 Manually setting and checking 512 combinations on the FPGA would take too long. Therefore, a dozen cases were chosen at random and checked. These test results matched the expected values in all cases. 
+
+## Documentation
+
+I used [VHDLTestbench.pdf](http://www.seas.upenn.edu/~ese171/vhdl/VHDLTestbench.pdf) extensively to code my final testbench. This document walked through creating a testbench for just this situation. It did not however how how to code for the subtractor. Regardless, this would've been the method I used to program my testbench with or without the document. It's the simpilest way. This helped me with they syntax mostly. 
+
+I also used [VHDL coding tips.com](http://vhdlguru.blogspot.com/2010/12/tips-for-running-successful-simulation.html) to help me with a problem I was having simulating my testbenches. I learned you have to select the testbench before trying to simulate. Simulating a regular module will give garbage. 
