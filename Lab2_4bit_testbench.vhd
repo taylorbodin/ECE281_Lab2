@@ -46,8 +46,9 @@ ARCHITECTURE behavior OF Lab2_4bit_testbench IS
          A : IN  std_logic_vector(3 downto 0);
          B : IN  std_logic_vector(3 downto 0);
          Subtract : IN  std_logic;
-         Sum : OUT  std_logic_vector(3 downto 0);
-         Cout : OUT  std_logic
+         Sum : INOUT  std_logic_vector(3 downto 0);
+         Cout : OUT  std_logic;
+			Overflow : OUT std_logic;
         );
     END COMPONENT;
     
@@ -60,6 +61,7 @@ ARCHITECTURE behavior OF Lab2_4bit_testbench IS
  	--Outputs
    signal Sum : std_logic_vector(3 downto 0);
    signal Cout : std_logic;
+	signal Overflow : std_logic;
  
 BEGIN
  

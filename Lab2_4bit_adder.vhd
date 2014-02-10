@@ -33,8 +33,9 @@ entity Lab2_4bit_adder is
     Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
            B : in  STD_LOGIC_VECTOR (3 downto 0);
            Subtract : in  STD_LOGIC;
-           Sum : out  STD_LOGIC_VECTOR (3 downto 0);
-           Cout : out  STD_LOGIC);
+           Sum : inout  STD_LOGIC_VECTOR (3 downto 0);
+           Cout : out  STD_LOGIC;
+			  Overflow : out STD_LOGIC);
 end Lab2_4bit_adder;
 
 architecture Structural of Lab2_4bit_adder is
@@ -60,6 +61,16 @@ architecture Structural of Lab2_4bit_adder is
 		);
 	END COMPONENT;
 	
+	--Overflow detector declaration
+	COMPONENT overflow_detector
+		PORT(
+			A_msb : IN std_logic;
+			B_msb : IN std_logic;
+			Sum_msb : IN std_logic;
+			O : OUT std_logic
+		);
+	END COMPONENT;
+	
 	signal Cin1, Cin2, Cin3 : std_logic;
 	
 	signal Bnot, Binner : std_logic_vector (3 downto 0);
@@ -73,6 +84,13 @@ begin
 		Y => Bnot,
 		S => Subtract,
 		O => Binner
+	);
+	
+	Ofdetector : overflow_detector PORT MAP(
+		A_msb => A(3),
+		B_msb => Binner(3),
+		Sum_msb => Sum(3),
+		O => Overflow
 	);
 	
 	add0 : Full_Adder PORT MAP(
