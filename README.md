@@ -86,6 +86,8 @@ A constraint file was generated wiring the inputs and output to the correct pins
 
 Manually setting and checking 512 combinations on the FPGA would take too long. Therefore, a dozen cases were chosen at random and checked. These test results matched the expected values in all cases. 
 
+Capt. Silva tested my design for functionality and agreed that it worked had full functionality. 2013-02-10
+
 ## Documentation
 
 I used [VHDLTestbench.pdf](http://www.seas.upenn.edu/~ese171/vhdl/VHDLTestbench.pdf) extensively to code my final testbench. This document walked through creating a testbench for just this situation. It did not however how how to code for the subtractor. Regardless, this would've been the method I used to program my testbench with or without the document. It's the simpilest way. This helped me with they syntax mostly. 
